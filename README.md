@@ -1,4 +1,4 @@
 # domus-sapiens
 
 ## Ссылки на макеты Figma
-https://github.com/NikolaySavenko/domus-sapiens
+https://www.figma.com/file/wpe0EjU6JRmb6tCN9ZNml4/Untitled?node-id=79%3A146
