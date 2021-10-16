@@ -20,6 +20,6 @@ namespace FrontendService.Model
 		#endregion
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-			=> optionsBuilder.UseNpgsql(System.Configuration.ConfigurationManager.ConnectionStrings["PostgreSQL"].ConnectionString);
+			=> optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("PostgreSQL"));
 	}
 }

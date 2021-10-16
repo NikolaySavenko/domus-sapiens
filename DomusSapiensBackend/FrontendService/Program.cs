@@ -1,4 +1,3 @@
-using Microsoft.OpenApi.Models;
 using FrontendService.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +11,7 @@ builder.Services.AddSwaggerGen(c =>
 	c.SwaggerDoc("v1", new() { Title = "FrontendService", Version = "v1" });
 });
 builder.Services.AddDbContext<PostgresContext>(options =>
-		options.UseNpgsql(System.Configuration.ConfigurationManager.ConnectionStrings["PostgreSQL"].ConnectionString));
+		options.UseNpgsql(Environment.GetEnvironmentVariable("PostgreSQL")));
 
 var app = builder.Build();
 
