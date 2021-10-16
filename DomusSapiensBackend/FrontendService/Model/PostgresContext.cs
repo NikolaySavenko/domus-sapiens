@@ -6,6 +6,7 @@ namespace FrontendService.Model
 	{
 		public DbSet<User> Users { get; set; }
 		public DbSet<Device> Devices { get; set; }
+		public DbSet<ActionActivity> Actions { get; set; }
 
 		public PostgresContext(DbContextOptions<PostgresContext> options): base(options)
 		{	
@@ -16,6 +17,7 @@ namespace FrontendService.Model
 		{
 			modelBuilder.Entity<User>();
 			modelBuilder.Entity<Device>();
+			modelBuilder.Entity<ActionActivity>();
 		}
 		#endregion
 

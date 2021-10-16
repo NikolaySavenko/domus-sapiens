@@ -2,11 +2,12 @@
 
 namespace FrontendService.Model
 {
-	public class User
+	public class ActionActivity
 	{
 		[Required]
+		public string ActionActivityId { get; set; }
+		[Required]
 		public int UserId { get; set; }
-		public List<Device> Devices { get; set; }
-		public List<ActionActivity> Actions { get; set; }
+		public string ActionActivityName { get; set; }
 	}
 }
