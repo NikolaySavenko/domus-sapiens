@@ -1,126 +1,78 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Domus-sapiens
-        </q-toolbar-title>
-
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer
-        v-model="leftDrawerOpen"
-        show-if-above
-        :width="200"
-        :breakpoint="500"
-      >
-        <q-scroll-area class="fit">
-          <q-list padding class="menu-list">
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="list" />
-              </q-item-section>
-
-              <q-item-section>
-                Главная
-              </q-item-section>
-            </q-item>
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="help" />
-              </q-item-section>
-
-              <q-item-section>
-                Помощь
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-scroll-area>
-      </q-drawer>
-
+  <q-layout view="hHh Lpr fFf">
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-footer class="menuinbottom">
+        <q-tabs v-model="tab" align="center" indicator-color="transparent" dense>
+          <q-route-tab to="profile" name="profile" :ripple="false" >
+            <q-btn round dense class="decrease1" flat>
+              <q-avatar class="decrease">
+                <img src="../assets/profile.png" >
+              </q-avatar>
+            </q-btn>
+          </q-route-tab>
+          <q-route-tab to="myrooms" :ripple="false" name="rooms" >
+            <q-btn dense round class="decrease1" flat>
+              <q-avatar square class="decrease">
+                <img src="../assets/door.png">
+              </q-avatar>
+            </q-btn>
+          </q-route-tab>
+          <q-route-tab to="../" :ripple="false" name="main" >
+            <q-btn round dense class="decrease1" flat>
+              <q-avatar square class="decrease" >
+                <img src="../assets/house.png">
+              </q-avatar>
+            </q-btn>
+          </q-route-tab>
+          <q-route-tab to="mydevice" :ripple="false" name="mydevice">
+            <q-btn round dense class="decrease1" flat>
+              <q-avatar square class="decrease">
+                <img src="../assets/dom.png">
+              </q-avatar>
+            </q-btn>
+            </q-route-tab>
+          <q-route-tab to="settings" :ripple="false" name="settings">
+            <q-btn round dense class="decrease1" flat>
+              <q-avatar class="decrease">
+                <img src="../assets/settings.png">
+              </q-avatar>
+            </q-btn>
+          </q-route-tab>
+        </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
-
 <script lang="ts">
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
-
-import { defineComponent, ref } from 'vue'
-
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
-
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
 </script>
+<style land="scss" scoped>
+.menuinbottom
+{
+  border-radius: 30px 30px 0px 0px;
+  position: absolute;
+  width: 100%;
+  height: 50px;
+}
+.menuintop
+{
+  width: 100%;
+  height: 50px;
+
+  background: #83C57E;
+  border: 1px solid #84C67E;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 50px 50px;
+}
+.decrease
+{
+  width: 100%;
+  height: 100%;
+}
+.decrease1
+{
+  width: 10px;
+  height: 10px;
+}
+</style>
