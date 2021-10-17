@@ -1,0 +1,36 @@
+version: "3.3"
+
+networks:
+  postgres:
+    driver: bridge
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminTestDatabase
+      POSTGRES_DB: "postgres"
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+ 
+  console-application:
+    container_name: work_with_postgres_container
+    image: work_with_postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - postgres
+    links:
+      - postgres    
+
+volumes:
+    postgres:
