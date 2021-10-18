@@ -1,7 +1,7 @@
 <template>
     <q-header align="center" class="bg-positive text-black">
         <p class="text-h4">Профиль</p>
-        <q-btn round flat align="center" class="buttonintop bg-primary">
+        <q-btn round flat align="center" class="top-button bg-primary">
             plus
         </q-btn>
         <p class="text-h4">Имя Фамилия</p>
@@ -39,19 +39,16 @@
 </script>
 
 <style land="scss" scoped>
-.data
-{
+.data {
     border-radius: 16px;
     margin-top: 9px;
 }
-.alignment
-{
+.alignment {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
-.buttonintop
-{
+.top-button {
     width: 150px;
     height: 150px;
 }

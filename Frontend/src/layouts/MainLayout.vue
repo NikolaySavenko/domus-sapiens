@@ -3,39 +3,39 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    <q-footer class="menuinbottom">
+    <q-footer class="bottom-menu">
         <q-tabs v-model="tab" align="center" indicator-color="transparent" dense>
           <q-route-tab to="profile" name="profile" :ripple="false" >
-            <q-btn round dense class="decrease1" flat>
-              <q-avatar class="decrease">
+            <q-btn round dense class="small-size-buttons" flat>
+              <q-avatar class="scalable-picture-size">
                 <img src="../assets/profile.png" >
               </q-avatar>
             </q-btn>
           </q-route-tab>
           <q-route-tab to="myrooms" :ripple="false" name="rooms" >
-            <q-btn dense round class="decrease1" flat>
-              <q-avatar square class="decrease">
+            <q-btn dense round class="small-size-buttons" flat>
+              <q-avatar square class="scalable-picture-size">
                 <img src="../assets/door.png">
               </q-avatar>
             </q-btn>
           </q-route-tab>
-          <q-route-tab to="../" :ripple="false" name="main" >
-            <q-btn round dense class="decrease1" flat>
-              <q-avatar square class="decrease" >
+          <q-route-tab to="/" :ripple="false" name="main" >
+            <q-btn round dense class="small-size-buttons" flat>
+              <q-avatar square class="scalable-picture-size" >
                 <img src="../assets/house.png">
               </q-avatar>
             </q-btn>
           </q-route-tab>
           <q-route-tab to="mydevice" :ripple="false" name="mydevice">
-            <q-btn round dense class="decrease1" flat>
-              <q-avatar square class="decrease">
+            <q-btn round dense class="small-size-buttons" flat>
+              <q-avatar square class="scalable-picture-size">
                 <img src="../assets/dom.png">
               </q-avatar>
             </q-btn>
             </q-route-tab>
           <q-route-tab to="settings" :ripple="false" name="settings">
-            <q-btn round dense class="decrease1" flat>
-              <q-avatar class="decrease">
+            <q-btn round dense class="small-size-buttons" flat>
+              <q-avatar class="scalable-picture-size">
                 <img src="../assets/settings.png">
               </q-avatar>
             </q-btn>
@@ -44,34 +44,30 @@
     </q-footer>
   </q-layout>
 </template>
+
 <script lang="ts">
+import { defineComponent, ref } from "vue"
+
+export default defineComponent({
+  setup() {
+    const tab = ref("main")
+    return { tab }
+  }
+})
 </script>
+
 <style land="scss" scoped>
-.menuinbottom
-{
+.bottom-menu {
   border-radius: 30px 30px 0px 0px;
   position: absolute;
   width: 100%;
   height: 50px;
 }
-.menuintop
-{
-  width: 100%;
-  height: 50px;
-
-  background: #83C57E;
-  border: 1px solid #84C67E;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 50px 50px;
-}
-.decrease
-{
+.scalable-picture-size {
   width: 100%;
   height: 100%;
 }
-.decrease1
-{
+.small-size-buttons {
   width: 10px;
   height: 10px;
 }

@@ -31,21 +31,18 @@
 </script>
 
 <style land="scss" scoped>
-.obj
-{
+.obj {
   margin-left: auto;
   margin-right: auto;
   width: 362px;
 }
-.el
-{
+.el {
   width:157px;
   height:101px;
   border-radius: 17px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 }
-.alignment
-{
+.alignment {
   margin-left: 12px;
   margin-right:12px;
   margin-top: 12px;

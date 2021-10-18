@@ -30,14 +30,12 @@
 </script>
 
 <style land="scss" scoped>
-.data
-{
+.data {
     height: 72px;
     border-radius: 16px;
     margin-top: 9px;
 }
-.alignment
-{
+.alignment {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
