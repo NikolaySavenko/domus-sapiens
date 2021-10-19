@@ -1,0 +1,205 @@
+[
+    {
+        "@id": "dtmi:basicModule;1",
+        "@type": "Interface",
+        "displayName": "basicModule",
+        "contents": [
+            {
+                "@type": "Property",
+                "name": "batteryCharge",
+                "schema": "double",
+                "description": "Battary charge in %"
+            },
+            {
+                "@type": "Command",
+                "name": "reboot",
+                "request": {
+                    "name": "rebootTime",
+                    "displayName": "Reboot Time",
+                    "description": "Requested time to reboot the device.",
+                    "schema": "dateTime"
+                },
+                "response": {
+                    "name": "scheduledTime",
+                    "schema": "dateTime"
+                }
+            },
+            {
+                "@type": "Property",
+                "name": "pin2",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin4",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin12",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin13",
+                "schema": "integer",
+                "writable": true,
+                "description": ": digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin14",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin15",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin25",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin26",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin27",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin32",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin33",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin34",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog output only pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin35",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog output only pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin36",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog output only pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin39",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital and analog output only pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin1",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin3",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin5",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin16",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin17",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin18",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin19",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin21",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin22",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+            {
+                "@type": "Property",
+                "name": "pin23",
+                "schema": "integer",
+                "writable": true,
+                "description": "digital input and output pin"
+            },
+        ],
+        "@context": "dtmi:dtdl:context;2"
+    }
+]
