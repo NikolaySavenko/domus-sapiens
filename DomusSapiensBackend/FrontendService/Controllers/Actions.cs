@@ -31,10 +31,10 @@ namespace FrontendService.Controllers
 		}
 
 		// GET api/<Actions>/actionName/Invoke
-		[HttpPost("{actionName}/Invoke")]
-		public string Invoke(string actionName)
+		[HttpPost("{id:guid}/Invoke")]
+		public string Invoke(Guid id)
 		{
-			return $"Oh shit! {actionName} has been triggered!";
+			return $"Oh shit! {id} has been triggered!";
 		}
 
 		// POST api/<Actions>/5
