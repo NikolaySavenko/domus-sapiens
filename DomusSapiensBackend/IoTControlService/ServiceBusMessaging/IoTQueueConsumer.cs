@@ -2,13 +2,6 @@
 
 namespace IoTControlService.ServiceBusMessaging
 {
-	public interface IServiceBusConsumer
-	{
-		Task RegisterOnMessageHandlerAndReceiveMessages();
-		Task CloseQueueAsync();
-		ValueTask DisposeAsync();
-	}
-
 	public class IoTQueueConsumer : IHostedService
 	{
 		private readonly ServiceBusClient _client;
