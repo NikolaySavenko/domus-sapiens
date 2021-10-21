@@ -38,11 +38,11 @@ namespace FrontendService.Controllers
 		}
 
 		// POST api/<Actions>/5
-		[HttpPost("{user_id}")]
-		public void Post(int id, [FromBody] string actionName)
+		[HttpPost("{user_id:guid}")]
+		public void Post(Guid id, [FromBody] string actionName)
 		{
 			_context.Actions.Add(new ActionActivity { 
-				ActionActivityId = Guid.NewGuid().ToString(),
+				ActionActivityId = Guid.NewGuid(),
 				UserId = id,
 				ActionActivityName = actionName
 			});

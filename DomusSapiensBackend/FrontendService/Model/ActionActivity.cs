@@ -5,9 +5,9 @@ namespace FrontendService.Model
 	public class ActionActivity
 	{
 		[Required]
-		public string ActionActivityId { get; set; }
+		public Guid ActionActivityId { get; set; }
 		[Required]
-		public int UserId { get; set; }
+		public Guid UserId { get; set; }
 		public string ActionActivityName { get; set; }
 	}
 }
