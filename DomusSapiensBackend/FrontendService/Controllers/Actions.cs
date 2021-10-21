@@ -30,12 +30,19 @@ namespace FrontendService.Controllers
 			return _context.Actions.Where(a => a.ActionActivityName == actionName).First();
 		}
 
+		// GET api/<Actions>/actionName/Invoke
+		[HttpPost("{id:guid}/Invoke")]
+		public string Invoke(Guid id)
+		{
+			return $"Oh shit! {id} has been triggered!";
+		}
+
 		// POST api/<Actions>/5
-		[HttpPost("{user_id}")]
-		public void Post(int id, [FromBody] string actionName)
+		[HttpPost("{user_id:guid}")]
+		public void Post(Guid id, [FromBody] string actionName)
 		{
 			_context.Actions.Add(new ActionActivity { 
-				ActionActivityId = Guid.NewGuid().ToString(),
+				ActionActivityId = Guid.NewGuid(),
 				UserId = id,
 				ActionActivityName = actionName
 			});

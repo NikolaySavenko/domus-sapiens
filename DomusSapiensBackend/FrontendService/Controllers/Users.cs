@@ -18,11 +18,11 @@ namespace FrontendService.Controllers
 			_context = context;
 		}
 
-		// GET: api/<DbController>
+		// GET: api/<Users>
 		[HttpGet]
 		public IEnumerable<User> Get()
 		{
-			var ids = new List<int>();
+			var ids = new List<Guid>();
 			foreach(var user in _context.Users)
 			{
 				ids.Add(user.UserId);
@@ -30,24 +30,24 @@ namespace FrontendService.Controllers
 			return _context.Users;
 		}
 
-		// GET api/<DbController>/5
-		[HttpGet("{id}")]
-		public User Get(int id)
+		// GET api/<Users>/5
+		[HttpGet("{id:guid}")]
+		public User Get(Guid id)
 		{
 			return _context.Users.Where(u => u.UserId == id).First();
 		}
 
-		// POST api/<DbController>/5
-		[HttpPost("{id}")]
-		public void Post(int id, [FromBody] string value)
+		// POST api/<Users>/5
+		[HttpPost("{id:guid}")]
+		public void Post(Guid id, [FromBody] string value)
 		{
 			_context.Users.Add(new User { UserId = id });
 			_context.SaveChanges();
 		}
 
-		// DELETE api/<DbController>/5
-		[HttpDelete("{id}")]
-		public void Delete(int id)
+		// DELETE api/<Users>/5
+		[HttpDelete("{id:guid}")]
+		public void Delete(Guid id)
 		{
 			_context.Remove(_context.Users.Where(u => u.UserId == id));
 		}
