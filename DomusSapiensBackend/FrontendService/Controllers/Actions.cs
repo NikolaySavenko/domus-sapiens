@@ -30,6 +30,13 @@ namespace FrontendService.Controllers
 			return _context.Actions.Where(a => a.ActionActivityName == actionName).First();
 		}
 
+		// GET api/<Actions>/actionName/Invoke
+		[HttpPost("{actionName}/Invoke")]
+		public string Invoke(string actionName)
+		{
+			return $"Oh shit! {actionName} has been triggered!";
+		}
+
 		// POST api/<Actions>/5
 		[HttpPost("{user_id}")]
 		public void Post(int id, [FromBody] string actionName)
