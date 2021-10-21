@@ -1,8 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
+using IoTControlService.ServiceBusMessaging;
 
+var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddHostedService<IoTQueueConsumer>();
+builder.Services.AddSingleton<IProcessData, ProcessData>();
 
 var app = builder.Build();
 
