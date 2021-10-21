@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddHostedService<IoTQueueConsumer>();
+builder.Services.AddHostedService<HighLevelCommendsConsumer>();
 builder.Services.AddSingleton<IProcessData, ProcessData>();
 
 var app = builder.Build();
