@@ -1,0 +1,82 @@
+version: "3.5"
+
+networks:
+  postgres:
+    driver: bridge
+  redis:
+
+volumes:
+    postgres:
+    redis:
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: "postgres"
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  redis:
+    container_name: redis_container
+    image: redis
+    env_file:
+      - .env
+    command: redis-server --requirepass ${REQUIREPASS}
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+    networks:
+      - redis
+    restart: unless-stopped
+  
+  frontend_api_service:
+    container_name: frontend_api_service_container
+    image: frontend_api_service
+    build:
+      context: ./DomusSapiensBackend
+      dockerfile: ./FrontendService/Dockerfile
+    networks:
+      - postgres
+      - redis
+    links:
+      - postgres
+      - redis
+
+  iot_control_service:
+    container_name: iot_control_service_container
+    image: iot_control_service
+    build: 
+      context: ./DomusSapiensBackend
+      dockerfile: ./IoTControlService/Dockerfile
+    networks:
+      - redis
+    links:
+      - redis
+
+  frontend_server:
+    container_name: frontend_server_container
+    image: frontend_server
+
+    build:
+      context: ./Frontend
+      dockerfile: ./Dockerfile
+      target: "develop-stage"
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./Frontend:/app"
+    command: /bin/sh -c "yarn && quasar dev"
+
