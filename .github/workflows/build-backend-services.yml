@@ -69,7 +69,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: ./DomusSapiensBackend
-        file: ./IoTControlService/
+        file: ./IoTControlService/.
         push: false
     
     - name: Build FrontendService container
