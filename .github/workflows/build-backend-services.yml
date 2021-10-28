@@ -1,0 +1,101 @@
+name: build-backend-services 
+
+on:
+  push:
+  
+  pull_request:
+    branches: [master]
+    
+jobs:
+  build-IoT-Control-Service:
+
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        dotnet-version: ['6.0.x' ]
+        configuration: [Debug] # Release
+
+    steps:
+    
+    - name: Git clone our repo 
+      uses: actions/checkout@v2
+    
+    - name: Setup .NET ${{matrix.dotnet-version}}
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+        include-prerelease: true
+      
+    - name: .NET Build
+      run: dotnet build ./DomusSapiensBackend/IoTControlService/IoTControlService.csproj -c ${{ matrix.configuration }} /p:CI=true
+  
+  build-Frontend-Service:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        dotnet-version: ['6.0.x' ]
+        configuration: [Debug] # Release
+        
+    steps:
+    
+    - name: Git clone our repo 
+      uses: actions/checkout@v2
+    
+    - name: Setup .NET ${{matrix.dotnet-version}}
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+        include-prerelease: true
+    
+    - name: .NET Build
+      run: dotnet build ./DomusSapiensBackend/FrontendService/FrontendService.csproj -c ${{ matrix.configuration }} /p:CI=true
+      
+  building-IoTControlService-containers:
+    runs-on: ubuntu-18.04
+          
+    steps:
+      
+    - name: Git clone our repo 
+      uses: actions/checkout@v2
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: all
+
+    - name: Set up Docker Buildx
+      id:   buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build  container
+      uses: docker/build-push-action@v2
+      with:
+        context: ./DomusSapiensBackend/
+        file: ./DomusSapiensBackend/IoTControlService/Dockerfile
+        platforms: linux/amd64,linux/arm64
+        push: false
+    
+  building-FrontendService-containers:
+    runs-on: ubuntu-18.04
+
+    steps:
+    
+    - name: Git clone our repo 
+      uses: actions/checkout@v2
+      
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: all
+    
+    - name: Set up Docker Buildx
+      id:   buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build  container
+      uses: docker/build-push-action@v2
+      with:
+        context: ./DomusSapiensBackend/
+        file: ./DomusSapiensBackend/FrontendService/Dockerfile
+        platforms: linux/amd64,linux/arm64
+        push: false
