@@ -24,6 +24,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
+        include-prerelease: true
     
     - name: Display dotnet version
       run: dotnet --version
@@ -50,6 +51,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
+        include-prerelease: true
     
     - name: Display dotnet version
       run: dotnet --version
