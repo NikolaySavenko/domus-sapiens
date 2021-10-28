@@ -52,14 +52,17 @@ jobs:
       
   building-IoTControlService-containers:
     runs-on: ubuntu-18.04
-    #strategy:
-      #matrix:
           
     steps:
       
     - name: Git clone our repo 
       uses: actions/checkout@v2
-    
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: all
+
     - name: Set up Docker Buildx
       id:   buildx
       uses: docker/setup-buildx-action@v1
@@ -69,17 +72,21 @@ jobs:
       with:
         context: ./DomusSapiensBackend/
         file: ./DomusSapiensBackend/IoTControlService/Dockerfile
+        platforms: linux/amd64,linux/arm64
         push: false
     
   building-FrontendService-containers:
     runs-on: ubuntu-18.04
-    #strategy:
-      #matrix:
-          
+
     steps:
     
     - name: Git clone our repo 
       uses: actions/checkout@v2
+      
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: all
     
     - name: Set up Docker Buildx
       id:   buildx
@@ -90,4 +97,5 @@ jobs:
       with:
         context: ./DomusSapiensBackend/
         file: ./DomusSapiensBackend/FrontendService/Dockerfile
+        platforms: linux/amd64,linux/arm64
         push: false
