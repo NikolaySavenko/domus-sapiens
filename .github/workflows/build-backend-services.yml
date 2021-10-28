@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        dotnet-version: ['3.0', '3.1.x', '5.0.x', '6.0.x' ]
+        dotnet-version: ['6.0.x' ]
         configuration: [Debug] # Release
 
     steps:
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        dotnet-version: ['3.0', '3.1.x', '5.0.x', '6.0.x' ]
+        dotnet-version: ['6.0.x' ]
         configuration: [Debug] # Release
         
     steps:
