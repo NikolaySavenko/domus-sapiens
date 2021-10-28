@@ -7,9 +7,13 @@ on:
     branches: [master]
     
 jobs:
-  build:
+  build-IoT-Control-Service:
 
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        dotnet-version: ['3.0', '3.1.x', '5.0.x', '6.0.x' ]
+        configuration: [Debug] # Release
 
     steps:
     
@@ -19,16 +23,37 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
-        
-    #- name: Restore dependencies
-    #  run: dotnet restore
-      
-    #- name: Build
-    #  run: dotnet build --no-restore
-      
+        dotnet-version: ${{ matrix.dotnet-version }}
+    
+    - name: .NET Build
+      run: dotnet build ./DomusSapiensBackend/IoTControlService/IoTControlService.csproj -c ${{ matrix.configuration }} /p:CI=true
+    
     - name: Print test message
-      run: echo "All good"
+      run: echo "All good build-IoT-Control-Service"
+
+  build-Frontend-Service:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        dotnet-version: ['3.0', '3.1.x', '5.0.x', '6.0.x' ]
+        configuration: [Debug] # Release
+        
+    steps:
+    
+    - name: Git clone our repo 
+      uses: actions/checkout@v2
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+    
+    - name: .NET Build
+      run: dotnet build ./DomusSapiensBackend/FrontendService/FrontendService.csproj -c ${{ matrix.configuration }} /p:CI=true
+    
+    #- name: .NET Test
+    #  run: dotnet test ./DomusSapiensBackend/FrontendService/FrontendService.csproj -c Release --no-build /p:CI=true
+    
+    - name: Print test message
+      run: echo "All good build-Frontend-Service"
       
-    #- name: Test
-    #  run: dotnet test --no-build --verbosity normal
