@@ -20,13 +20,16 @@ jobs:
     - name: Git clone our repo 
       uses: actions/checkout@v2
     
-    - name: Setup .NET
+    - name: Setup .NET ${{matrix.dotnet-version}}
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     
-    - name: .NET Build
-      run: dotnet build ./DomusSapiensBackend/IoTControlService/IoTControlService.csproj -c ${{ matrix.configuration }} /p:CI=true
+    - name: Display dotnet version
+      run: dotnet --version
+    
+    #- name: .NET Build
+    #  run: dotnet build ./DomusSapiensBackend/IoTControlService/IoTControlService.csproj -c ${{ matrix.configuration }} /p:CI=true
     
     - name: Print test message
       run: echo "All good build-IoT-Control-Service"
@@ -43,13 +46,16 @@ jobs:
     - name: Git clone our repo 
       uses: actions/checkout@v2
     
-    - name: Setup .NET
+    - name: Setup .NET ${{matrix.dotnet-version}}
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     
-    - name: .NET Build
-      run: dotnet build ./DomusSapiensBackend/FrontendService/FrontendService.csproj -c ${{ matrix.configuration }} /p:CI=true
+    - name: Display dotnet version
+      run: dotnet --version
+    
+    #- name: .NET Build
+    #  run: dotnet build ./DomusSapiensBackend/FrontendService/FrontendService.csproj -c ${{ matrix.configuration }} /p:CI=true
     
     #- name: .NET Test
     #  run: dotnet test ./DomusSapiensBackend/FrontendService/FrontendService.csproj -c Release --no-build /p:CI=true
