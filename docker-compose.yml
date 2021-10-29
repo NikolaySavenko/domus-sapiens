@@ -48,6 +48,8 @@ services:
     build:
       context: ./DomusSapiensBackend
       dockerfile: ./FrontendService/Dockerfile
+    env_file:
+      - .env
     environment:
       PostgreSQL: ${PostgreSQL}
       ASPNETCORE_ENVIRONMENT: ${FRONTEND_API_ASPNETCORE_ENVIRONMENT}
