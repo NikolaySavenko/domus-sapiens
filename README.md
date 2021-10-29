@@ -5,3 +5,5 @@
 
 ## Ссылки на макеты Figma
 https://www.figma.com/file/wpe0EjU6JRmb6tCN9ZNml4/Untitled?node-id=79%3A146
+## Ссылка на логотип проекта
+https://www.canva.com/design/DAEtKM_xJuY/p8TS_OTYvCv_WvguC_nYxw/view
