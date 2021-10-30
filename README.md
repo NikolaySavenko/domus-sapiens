@@ -5,3 +5,6 @@
 
 ## Ссылки на макеты Figma
 https://www.figma.com/file/wpe0EjU6JRmb6tCN9ZNml4/Untitled?node-id=79%3A146
+
+## Ссылки на Логотип
+https://mail.yandex.ru/message_part/Логотип%20для%20мобильного%20приложения%20умного%20дома%20.png?_uid=989907447&hid=1.2&ids=177329235327716614&name=Логотип%20для%20мобильного%20приложения%20умного%20дома%20.png
