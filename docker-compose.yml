@@ -48,6 +48,13 @@ services:
     build:
       context: ./DomusSapiensBackend
       dockerfile: ./FrontendService/Dockerfile
+    env_file:
+      - .env
+    environment:
+      PostgreSQL: ${PostgreSQL}
+      ASPNETCORE_ENVIRONMENT: ${FRONTEND_API_ASPNETCORE_ENVIRONMENT}
+    ports:
+      - "3001:80"
     networks:
       - postgres
       - redis
@@ -58,6 +65,13 @@ services:
   iot_control_service:
     container_name: iot_control_service_container
     image: iot_control_service
+    env_file:
+      - .env
+    environment:
+      ServiceBusConnectionString: ${ServiceBusConnectionString}
+      ASPNETCORE_ENVIRONMENT: ${IOT_CONTROL_ASPNETCORE_ENVIRONMENT}
+    ports:
+      - "3002:80"
     build: 
       context: ./DomusSapiensBackend
       dockerfile: ./IoTControlService/Dockerfile
