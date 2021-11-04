@@ -36,7 +36,7 @@
           <q-route-tab to="settings" :ripple="false" name="settings">
             <q-btn round dense class="small-size-buttons" flat>
               <q-avatar class="scalable-picture-size">
-                <img src="../assets/settings.png">
+                <img src="~assets\settings.png">
               </q-avatar>
             </q-btn>
           </q-route-tab>
@@ -46,6 +46,7 @@
 </template>
 
 <script lang="ts">
+//import axios from 'axios'
 import { defineComponent, ref } from "vue"
 
 export default defineComponent({
@@ -62,6 +63,7 @@ export default defineComponent({
   position: absolute;
   width: 100%;
   height: 50px;
+  background: linear-gradient(180deg, #C6AAFD 0%, #89EAF3 134%), linear-gradient(180deg, #65B5E1 0%, #2F496E 151.5%);;
 }
 .scalable-picture-size {
   width: 100%;

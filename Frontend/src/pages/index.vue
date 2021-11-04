@@ -1,26 +1,9 @@
 <template>
     <div class="obj">
-      <div class="row">
-        <q-card class="col alignment">
-          <q-card-actions align="center" class="el text-center bg-secondary">
-            1
-          </q-card-actions>
-        </q-card>
-        <q-card class="col alignment">
-          <q-card-actions align="center" class="col el text-center bg-primary">
-            2
-          </q-card-actions>
-        </q-card>
-      </div>
-      <div class="row">
-        <q-card class="col alignment">
+      <div class="row-button">
+        <q-card v-for="lol in data" :key="lol" class="alignment">
           <q-card-actions align="center" class="el text-center bg-primary">
-            1
-          </q-card-actions>
-        </q-card>
-        <q-card class="col alignment">
-          <q-card-actions align="center" class="col el text-center bg-secondary">
-            2
+            {{ lol.ActionActivityName }}
           </q-card-actions>
         </q-card>
       </div>
@@ -28,6 +11,32 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref } from "vue"
+const data = [
+{
+  ActionActivityId : "25776d50-36e5-4056-bf30-ca07157bc56d",
+  UserId : "25776d50-36e5-4056-bf30-ca07157bc56d",
+  ActionActivityName : "test"
+},{
+  ActionActivityId : "25776d50-36e5-4056-bf30-ca07157bc56d",
+  UserId : "25776d50-36e5-4056-bf30-ca07157bc56d",
+  ActionActivityName : "t1"
+},{
+  ActionActivityId : "25776d50-36e5-4056-bf30-ca07157bc56d",
+  UserId : "25776d50-36e5-4056-bf30-ca07157bc56d",
+  ActionActivityName : "t2"
+},{
+  ActionActivityId : "25776d50-36e5-4056-bf30-ca07157bc56d",
+  UserId : "25776d50-36e5-4056-bf30-ca07157bc56d",
+  ActionActivityName : "t1"
+}]
+export default defineComponent({
+  data() {
+    return {
+      data
+    }
+  }
+})
 </script>
 
 <style land="scss" scoped>
@@ -36,6 +45,11 @@
   margin-right: auto;
   width: 362px;
 }
+.row-button{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .el {
   width:157px;
   height:101px;
