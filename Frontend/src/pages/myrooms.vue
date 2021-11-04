@@ -1,5 +1,5 @@
 <template>
-    <q-header align="center" class="bg-positive text-black">
+    <q-header align="center" class="bg-secondary text-black">
         <p class="text-h4">Мои комнаты</p>
     </q-header>
     <div class="alignment" >
@@ -27,6 +27,9 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref } from "vue"
+export default defineComponent({
+})
 </script>
 
 <style land="scss" scoped>

@@ -1,8 +1,8 @@
 <template>
-    <q-header align="center" class="bg-positive text-black">
+    <q-header align="center" class="bg-secondary text-black">
         <p class="text-h4">Профиль</p>
         <q-btn round flat align="center" class="top-button bg-primary">
-            plus
+            <img src="../assets/plus.png">
         </q-btn>
         <p class="text-h4">Имя Фамилия</p>
     </q-header>
@@ -36,6 +36,9 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref } from "vue"
+export default defineComponent({
+})
 </script>
 
 <style land="scss" scoped>
