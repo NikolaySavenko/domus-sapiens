@@ -2,15 +2,16 @@
 using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
+using System;
 
 namespace FrontendService.Messages
 {
 	public class ActionMessage : IMessage
 	{
 		private readonly ActionActivity _action;
-		private string _connectionString = "<NAMESPACE CONNECTION STRING>";
+		private string _connectionString = Environment.GetEnvironmentVariable("ServiceBusConnectionString");
 
-		public string QueueName { get; init; } = "<QUEUE NAME>";
+		public string QueueName { get; init; } = "iot-service-high-level-commands-input";
 		public ServiceBusMessage Message { get; init; }
 
 		public ILogger Logger { get; init; }
