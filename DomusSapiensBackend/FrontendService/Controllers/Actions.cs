@@ -1,4 +1,5 @@
-﻿using FrontendService.Model;
+﻿using FrontendService.Messages;
+using FrontendService.Model;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,10 +11,12 @@ namespace FrontendService.Controllers
 	public class Actions : ControllerBase
 	{
 		private readonly PostgresContext _context;
+		private readonly ILogger _log;
 
-		public Actions(PostgresContext context)
+		public Actions(ILogger<Actions> log, PostgresContext context)
 		{
 			_context = context;
+			_log = log;
 		}
 
 		// GET: api/<Actions>
@@ -32,9 +35,11 @@ namespace FrontendService.Controllers
 
 		// GET api/<Actions>/actionName/Invoke
 		[HttpPost("{id:guid}/Invoke")]
-		public string Invoke(Guid id)
+		public async Task<string> InvokeAsync(Guid id)
 		{
-			return $"Oh shit! {id} has been triggered!";
+			var activity = _context.Actions.Where(a => a.ActionActivityId == id).First();
+			var actionMessage = new ActionMessage(activity, _log);
+			return $"Oh shit! {id} has been triggered(result={await actionMessage.TrySendAsync()})!";
 		}
 
 		// POST api/<Actions>/5
