@@ -1,6 +1,7 @@
 ﻿using FrontendService.Model;
 using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.Logging.Abstractions;
+using Newtonsoft.Json;
 
 namespace FrontendService.Messages
 {
@@ -19,7 +20,7 @@ namespace FrontendService.Messages
 		public ActionMessage(ActionActivity action, ILogger logger)
 		{
 			_action = action;
-			Message = new ServiceBusMessage(_action.ToString());
+			Message = new ServiceBusMessage(JsonConvert.SerializeObject(action));
 			Logger = logger;
 		}
 
