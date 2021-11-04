@@ -9,7 +9,7 @@ namespace FrontendService.Messages
 	public class ActionMessage : IMessage
 	{
 		private readonly ActionActivity _action;
-		private string _connectionString = Environment.GetEnvironmentVariable("ServiceBusConnectionString");
+		private readonly string _connectionString = Environment.GetEnvironmentVariable("ServiceBusConnectionString");
 
 		public string QueueName { get; init; } = "iot-service-high-level-commands-input";
 		public ServiceBusMessage Message { get; init; }
