@@ -1,5 +1,6 @@
-﻿using IoTControlService.Model.HighLevelAction;
-using IoTControlService.Model.DeviceMethods;
+﻿using IoTControlService.Model.DeviceMethods;
+using IoTControlService.Model.HighLevelAction;
+using Newtonsoft.Json.Linq;
 
 namespace IoTControlService.Model.Command
 {
@@ -8,15 +9,17 @@ namespace IoTControlService.Model.Command
 	{
 		private Command _executable;
 
-		public CommandFactory(string commandName, Guid deviceId)
+		public CommandFactory(Guid deviceId)
 		{
 			_executable = new Command { DeviceId = deviceId };
 		}
 
-		public IExecutable BuildCommand()
+		public IExecutable BuildCommand(HighLevelAction.HighLevelAction action)
 		{
-			//TODO get Actionjob from redis
-			Actionjob job = new Actionjob { Name = "JobFromRedis", Methods = new List<IDeviceMethod>() };
+			//TODO get Actionjob from DB
+			Actionjob job = new Actionjob { Name = "JobFromDB", Methods = new List<IDeviceMethod>() {
+				new GPIOSwitch(action.Params["pin"].ToString(), action.Params["value"].ToString())
+			} };
 
 			_executable._methods = job.Methods;
 			return _executable;
