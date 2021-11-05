@@ -1,8 +1,10 @@
 ﻿using FrontendService.Model;
+using IoTControlService.Model.HighLevelAction;
 using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json.Linq;
 
 namespace FrontendService.Messages
 {
@@ -21,8 +23,10 @@ namespace FrontendService.Messages
 		public ActionMessage(ActionActivity action, ILogger logger)
 		{
 			_action = action;
-			Message = new ServiceBusMessage(JsonConvert.SerializeObject(action));
 			Logger = logger;
+			// TODO add DeviceId and Params to ActionMessage 
+			var hAction = new HighLevelAction { Action = action.ActionActivityName, Device = action.UserId, Params = JObject.Parse("{ pin: test, value: 1 }") };
+			Message = new ServiceBusMessage(JsonConvert.SerializeObject(hAction));
 		}
 
 		public async Task<bool> TrySendAsync()
