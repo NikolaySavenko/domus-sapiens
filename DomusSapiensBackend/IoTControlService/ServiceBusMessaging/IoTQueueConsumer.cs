@@ -1,4 +1,5 @@
 ﻿using Azure.Messaging.ServiceBus;
+using IoTControlService.Model.HighLevelAction;
 
 namespace IoTControlService.ServiceBusMessaging
 {
@@ -49,8 +50,8 @@ namespace IoTControlService.ServiceBusMessaging
 
 		private async Task ProcessMessagesAsync(ProcessMessageEventArgs args)
 		{
-			var myPayload = args.Message.Body.ToObjectFromJson<MyPayload>();
-			await _processData.Process(myPayload).ConfigureAwait(false);
+			var action = args.Message.Body.ToObjectFromJson<HighLevelAction>();
+			await _processData.Process(action).ConfigureAwait(false);
 			await args.CompleteMessageAsync(args.Message).ConfigureAwait(false);
 		}
 
