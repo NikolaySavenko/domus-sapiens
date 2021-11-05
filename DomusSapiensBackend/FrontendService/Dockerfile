@@ -7,10 +7,12 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
+
 COPY ["FrontendService/FrontendService.csproj", "FrontendService/"]
+COPY ["IoTControlService/IoTControlService.csproj", "IoTControlService/"]
+
 RUN dotnet restore "FrontendService/FrontendService.csproj"
 COPY . .
-COPY ../IoTControlService ../IoTControlService
 WORKDIR "/src/FrontendService"
 RUN dotnet build "FrontendService.csproj" -c Release -o /app/build
 
