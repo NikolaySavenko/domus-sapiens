@@ -25,6 +25,24 @@
                 }
             },
             {
+                "@type": "Command",
+                "name": "GPIO_SWITCH",
+                "request": [
+                {
+                    "name": "pin",
+                    "displayName": "pin",
+                    "description": "Requested pin to write value.",
+                    "schema": "integer"
+                },
+                {
+                	"name": "value",
+                    "displayName": "value",
+                    "description": "Requested value to on the pin.",
+                    "schema": "integer"
+                }
+                ]
+            },
+            {
                 "@type": "Property",
                 "name": "pin2",
                 "schema": "integer",
