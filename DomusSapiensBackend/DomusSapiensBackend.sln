@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31717.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontendService", "FrontendService\FrontendService.csproj", "{F917B75D-A326-492E-B50A-10F6DB289053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTControlService", "IoTControlService\IoTControlService.csproj", "{16EA0650-D296-4592-9BF9-944BD7025F54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoTControlService", "IoTControlService\IoTControlService.csproj", "{16EA0650-D296-4592-9BF9-944BD7025F54}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CDC00F90-4D56-45D3-8DF8-82C9651C95D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{16EA0650-D296-4592-9BF9-944BD7025F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16EA0650-D296-4592-9BF9-944BD7025F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16EA0650-D296-4592-9BF9-944BD7025F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDC00F90-4D56-45D3-8DF8-82C9651C95D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDC00F90-4D56-45D3-8DF8-82C9651C95D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDC00F90-4D56-45D3-8DF8-82C9651C95D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDC00F90-4D56-45D3-8DF8-82C9651C95D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
