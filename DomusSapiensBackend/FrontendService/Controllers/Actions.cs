@@ -1,6 +1,7 @@
 ﻿using FrontendService.Messages;
 using FrontendService.Model;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -35,20 +36,20 @@ namespace FrontendService.Controllers
 
 		// GET api/<Actions>/actionName/Invoke
 		[HttpPost("{id:guid}/Invoke")]
-		public async Task<string> InvokeAsync(Guid id)
+		public async Task<string> InvokeAsync(Guid id, [FromBody] JObject actionParams)
 		{
 			var activity = _context.Actions.Where(a => a.ActionActivityId == id).First();
-			var actionMessage = new ActionMessage(activity, _log);
+			var actionMessage = new ActionMessage(activity, actionParams, _log);
 			return $"Oh shit! {id} has been triggered(result={await actionMessage.TrySendAsync()})!";
 		}
 
 		// POST api/<Actions>/5
 		[HttpPost("{user_id:guid}")]
-		public void Post(Guid id, [FromBody] string actionName)
+		public void Post(Guid user_id, [FromBody] string actionName)
 		{
 			_context.Actions.Add(new ActionActivity { 
 				ActionActivityId = Guid.NewGuid(),
-				UserId = id,
+				UserId = user_id,
 				ActionActivityName = actionName
 			});
 			_context.SaveChanges();

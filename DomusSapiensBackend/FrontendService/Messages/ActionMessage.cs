@@ -18,14 +18,14 @@ namespace FrontendService.Messages
 
 		public ILogger Logger { get; init; }
 
-		public ActionMessage(ActionActivity action) : this(action,  NullLogger.Instance) { }
+		public ActionMessage(ActionActivity action, JObject actionParams) : this(action, actionParams,  NullLogger.Instance) { }
 
-		public ActionMessage(ActionActivity action, ILogger logger)
+		public ActionMessage(ActionActivity action, JObject actionParams, ILogger logger)
 		{
 			_action = action;
 			Logger = logger;
-			// TODO add DeviceId and Params to ActionMessage 
-			var hAction = new HighLevelAction { Action = action.ActionActivityName, Device = action.UserId, Params = JObject.Parse("{ pin: test, value: 1 }") };
+			// TODO add DeviceId to ActionMessage 
+			var hAction = new HighLevelAction { Action = action.ActionActivityName, Device = action.UserId, Params = actionParams };
 			Message = new ServiceBusMessage(JsonConvert.SerializeObject(hAction));
 		}
 
