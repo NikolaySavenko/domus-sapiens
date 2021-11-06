@@ -9,7 +9,8 @@ namespace FrontendService.Model
 		public DbSet<ActionActivity> Actions { get; set; }
 
 		public PostgresContext(DbContextOptions<PostgresContext> options): base(options)
-		{	
+		{
+			Database.EnsureCreated();
 		}
 
 		#region Required
