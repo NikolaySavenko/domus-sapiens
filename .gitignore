@@ -392,3 +392,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# File to build docker.compose.yml
+*.env
