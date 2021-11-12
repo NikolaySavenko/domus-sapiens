@@ -10,26 +10,31 @@ volumes:
     redis:
 
 services:
+
   postgres:
-    container_name: postgres_container
+    container_name: postgres
     image: postgres
+    restart: always
     env_file:
       - .env
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: "postgres"
-      PGDATA: /data/postgres
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-       - postgres:/data/postgres
-    ports:
+      - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -h localhost -U ${POSTGRES_USER}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports: 
       - "5432:5432"
     networks:
       - postgres
-    restart: unless-stopped
-
+ 
   redis:
-    container_name: redis_container
+    container_name: redis
     image: redis
     env_file:
       - .env
@@ -43,7 +48,7 @@ services:
     restart: unless-stopped
   
   frontend_api_service:
-    container_name: frontend_api_service_container
+    container_name: frontend_api_service
     image: frontend_api_service
     build:
       context: ./DomusSapiensBackend
@@ -58,12 +63,15 @@ services:
     networks:
       - postgres
       - redis
+    depends_on: 
+      - postgres
+      - redis
     links:
       - postgres
       - redis
 
   iot_control_service:
-    container_name: iot_control_service_container
+    container_name: iot_control_service
     image: iot_control_service
     env_file:
       - .env
@@ -81,7 +89,7 @@ services:
       - redis
 
   frontend_server:
-    container_name: frontend_server_container
+    container_name: frontend_server
     image: frontend_server
 
     build:
