@@ -42,8 +42,10 @@ jobs:
     - name: Install
       run: npm install ./Frontend     
 
-    - name: CI
-      run: npm ci
+    - name: List added packages
+      run: ls | grep package-lock 
+    #- name: CI
+    #  run: npm ci
       
     - name: Build  
       run: npm run  # build ./Frontend  --if-present
