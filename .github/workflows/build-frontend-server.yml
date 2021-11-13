@@ -33,6 +33,7 @@ jobs:
     - name: Install
       run: |
         yarn global add @quasar/cli
+        yarn global add @quasar/app
         npm install ./Frontend  
       # npm install @quasar/cli
           
