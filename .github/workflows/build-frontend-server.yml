@@ -35,7 +35,7 @@ jobs:
         yarn global add @quasar/cli
         yarn global add @quasar/app
         npm install ./Frontend
-        quasar create
+        quasar create .
       #  npm install build
       # npm install @quasar/cli
           
