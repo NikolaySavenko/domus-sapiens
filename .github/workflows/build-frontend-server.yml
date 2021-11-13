@@ -46,10 +46,10 @@ jobs:
     #  run: npm ci
       
     - name: Build  
-      run: npm run # build ./Frontend  --if-present
+      run: npm run build #  ./Frontend  --if-present
     
     - name: Test
-      run: npm test ./Frontend
+      run: npm test # ./Frontend
     
     
     #- name: Install, build, test # Выполняем необходимые команды
