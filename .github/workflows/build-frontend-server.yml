@@ -39,6 +39,7 @@ jobs:
       run: |
         npm i -g ntl
         ntl
+        npm fund
     #    ls | grep package-lock
     #    cat package-lock.json
     
