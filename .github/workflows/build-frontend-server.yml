@@ -43,7 +43,7 @@ jobs:
       run: npm install ./Frontend     
 
     - name: explain installed packages
-      run: npm explain
+      run: npm explain ./Frontend 
 
     #- name: CI
     #  run: npm ci
