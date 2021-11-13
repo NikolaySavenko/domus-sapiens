@@ -35,6 +35,7 @@ jobs:
         yarn global add @quasar/cli
         yarn global add @quasar/app
         npm install ./Frontend  
+        npm install build
       # npm install @quasar/cli
           
     #    npm install -g coffee-script node-gyp
@@ -55,7 +56,7 @@ jobs:
     #    quasar create quasar
     #    cd quasar
     - name: Build  
-      run: npm help # npm run build ./Frontend  --if-present
+      run: npm  # npm run build ./Frontend  --if-present
     
     #- name: Test
     #  run: npm test # ./Frontend
