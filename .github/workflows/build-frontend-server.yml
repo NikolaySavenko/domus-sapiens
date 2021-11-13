@@ -28,22 +28,23 @@ jobs:
         node-version: ${{ matrix.node-version }}
     #    cache: 'npm'
     
-    - name: Cache
-      uses: actions/cache@v1
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-      
-    - name: node version
-      run: node --version
+    #- name: Cache
+    #  uses: actions/cache@v1
+    #  with:
+    #    path: ~/.npm
+    #    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    #    restore-keys: |
+    #      ${{ runner.os }}-node-
+  
     - name: version npm
       run: npm version 
-      
-#    - name: Install
-#      run: npm install 
-    
+
+    - name: Install
+      run: npm install     
+
+    - name: explain installed packages
+      run: npm explain
+
     #- name: CI
     #  run: npm ci
       
