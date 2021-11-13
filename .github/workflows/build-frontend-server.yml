@@ -47,6 +47,10 @@ jobs:
     #- name: CI
     #  run: npm ci
       
+    - name: Create quasar folder
+      run: |
+        quasar create quasar
+        cd quasar
     - name: Build  
       run: npx quasar dev # npm run build ./Frontend  --if-present
     
