@@ -42,17 +42,14 @@ jobs:
     - name: Install
       run: npm install ./Frontend     
 
-    - name: explain installed packages
-      run: npm explain ./Frontend 
-
     #- name: CI
     #  run: npm ci
       
-    #- name: Build  
-    #  run: npm run build #--if-present
+    - name: Build  
+      run: npm run build ./Frontend #--if-present
     
-    #- name: Test
-    #  run: npm test
+    - name: Test
+      run: npm test ./Frontend
     
     
     #- name: Install, build, test # Выполняем необходимые команды
