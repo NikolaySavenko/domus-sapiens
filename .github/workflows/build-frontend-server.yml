@@ -32,8 +32,8 @@ jobs:
 
     - name: Install
       run: |
-        yarn
-    #    npm install ./Frontend    
+        npm install -g @quasar/cli
+        npm install ./Frontend    
     #    npm install -g coffee-script node-gyp
       
     #- name: List added packages
