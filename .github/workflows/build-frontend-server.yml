@@ -55,7 +55,7 @@ jobs:
     #    quasar create quasar
     #    cd quasar
     - name: Build  
-      run: npm test # npm run build ./Frontend  --if-present
+      run: npm build # npm run build ./Frontend  --if-present
     
     #- name: Test
     #  run: npm test # ./Frontend
