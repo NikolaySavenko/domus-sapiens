@@ -46,7 +46,7 @@ jobs:
     #  run: npm ci
       
     - name: Build  
-      run: npm run ./Frontend # build    --if-present
+      run: npm run # build ./Frontend  --if-present
     
     - name: Test
       run: npm test ./Frontend
