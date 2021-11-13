@@ -31,7 +31,7 @@ jobs:
       run: npm version 
 
     - name: Install
-      run: npm install ./Frontend/package.json     
+      run: npm install ./Frontend    
 
     - name: List added packages
       run: |
