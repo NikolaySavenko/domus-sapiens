@@ -25,7 +25,12 @@ jobs:
     - name: Git clone our repo
       uses: actions/checkout@v2
       
-      
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    #    cache: 'npm'
+    
     - name: Cache
       uses: actions/cache@v1
       with:
@@ -34,12 +39,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
       
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-    #    cache: 'npm'
-    
     
     - name: Install
       run: npm install 
