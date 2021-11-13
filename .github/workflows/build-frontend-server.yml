@@ -32,14 +32,15 @@ jobs:
 
     - name: Install
       run: |
-        npm install ./Frontend    
-        npm install -g coffee-script node-gyp
+        yarn
+    #    npm install ./Frontend    
+    #    npm install -g coffee-script node-gyp
       
-    - name: List added packages
-      run: |
-        npm i -g ntl
-        ntl
-        npm fund
+    #- name: List added packages
+    #  run: |
+    #    npm i -g ntl
+    #    ntl
+    #    npm fund
     #    ls | grep package-lock
     #    cat package-lock.json
     
@@ -47,10 +48,10 @@ jobs:
     #  run: npm ci
       
     - name: Build  
-      run: npm run build #  ./Frontend  --if-present
+      run: quasar build # npm run build ./Frontend  --if-present
     
-    - name: Test
-      run: npm test # ./Frontend
+    #- name: Test
+    #  run: npm test # ./Frontend
     
     
     
