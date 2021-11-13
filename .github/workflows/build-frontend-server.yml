@@ -28,13 +28,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     #    cache: 'npm'
     
-    #- name: Cache
-    #  uses: actions/cache@v1
-    #  with:
-    #    path: ~/.npm
-    #    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    #    restore-keys: |
-    #      ${{ runner.os }}-node-
+    - name: Cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
   
     - name: version npm
       run: npm version 
@@ -45,13 +45,13 @@ jobs:
     - name: List added packages
       run: |
         ls | grep package-lock
-        browserslist
     #    cat package-lock.json
+    
     #- name: CI
     #  run: npm ci
       
     - name: Build  
-      run: npm run  # build ./Frontend  --if-present
+      run: npm run build #  ./Frontend  --if-present
     
     - name: Test
       run: npm test # ./Frontend
