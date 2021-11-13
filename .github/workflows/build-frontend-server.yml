@@ -45,7 +45,8 @@ jobs:
     - name: List added packages
       run: |
         ls | grep package-lock
-        cat package-lock.json
+        browserslist
+    #    cat package-lock.json
     #- name: CI
     #  run: npm ci
       
