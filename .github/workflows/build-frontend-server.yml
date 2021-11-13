@@ -26,21 +26,12 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    #    cache: 'npm'
-    
-    #- name: Cache
-    #  uses: actions/cache@v1
-    #  with:
-    #    path: ~/.npm
-    #    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    #    restore-keys: |
-    #     ${{ runner.os }}-node-
   
     - name: version npm
       run: npm version 
 
     - name: Install
-      run: npm install ./Frontend     
+      run: npm install ./Frontend/package.json     
 
     - name: List added packages
       run: |
@@ -58,6 +49,19 @@ jobs:
     - name: Test
       run: npm test # ./Frontend
     
+    
+    
+    
+      #    cache: 'npm'
+    
+    #- name: Cache
+    #  uses: actions/cache@v1
+    #  with:
+    #    path: ~/.npm
+    #    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    #    restore-keys: |
+    #     ${{ runner.os }}-node-
+  
     
     #- name: Install, build, test # Выполняем необходимые команды
     #  run: |
