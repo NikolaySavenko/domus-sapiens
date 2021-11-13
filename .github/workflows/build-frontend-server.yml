@@ -31,8 +31,10 @@ jobs:
       run: npm version 
 
     - name: Install
-      run: npm install ./Frontend    
-
+      run: |
+        npm install ./Frontend    
+        npm install -g coffee-script node-gyp
+      
     - name: List added packages
       run: |
         npm i -g ntl
