@@ -34,7 +34,15 @@ jobs:
       run: |
         yarn install
         yarn add ./Frontend
-      #  yarn global add @quasar/cli
+        yarn global add @quasar/cli
+    
+    - name: Build  # npm run build ./Frontend  --if-present
+      run: |
+        quasar --version
+        quasar help
+        quasar build
+        
+      
       #  npm install ./Frontend
       #  yarn
       #  npm install build
@@ -57,13 +65,7 @@ jobs:
     #  run: |
     #    quasar create quasar
     #    cd quasar
-    - name: Build  # npm run build ./Frontend  --if-present
-      run: |
-        quasar --version
-        quasar help
-        quasar build
-        
-#        quasar build 
+
         
     
     #- name: Test
