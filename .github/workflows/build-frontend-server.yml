@@ -3,11 +3,9 @@ name: build-frontend-server
 
 on:
   push:
- #   paths: './Frontend/**'
-  pull_request:
-    paths: './Frontend/**'
-    
 
+  pull_request:
+    
 jobs:
   build-frontend-server:
 
@@ -15,103 +13,23 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 16.x ] # 12.x, 14.x,
+        node-version: [ 16.x ]  
  
     steps:
     
     - name: Git clone our repo
       uses: actions/checkout@v2
       
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
   
-    - name: version npm
-      run: npm version 
-
-    #- name: Install
-    #  run: |
-    #    yarn install
-    #    yarn add ./Frontend
-    #    yarn global add @quasar/cli
+    - run: cd ./Frontend
     
-    - name: Build  # npm run build ./Frontend  --if-present
-      run: |
+    - name: Install all dependencies  
+      run: yarn install 
         
-        cd ./Frontend
-        yarn install
-        yarn build
+    - name: Build frontend server
+      run: yarn build
         
-     # quasar build 
-        
-      
-      #  npm install ./Frontend
-      #  yarn
-      #  npm install build
-      # npm install @quasar/cli
-          
-    #    npm install -g coffee-script node-gyp
-      
-    #- name: List added packages
-    #  run: |
-    #    npm i -g ntl
-    #    ntl
-    #    npm fund
-    #    ls | grep package-lock
-    #    cat package-lock.json
-    
-    #- name: CI
-    #  run: npm ci
-      
-    #- name: Create quasar folder
-    #  run: |
-    #    quasar create quasar
-    #    cd quasar
-
-        
-    
-    #- name: Test
-    #  run: npm test # ./Frontend
-    
-    
-    
-    
-      #    cache: 'npm'
-    
-    #- name: Cache
-    #  uses: actions/cache@v1
-    #  with:
-    #    path: ~/.npm
-    #    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    #    restore-keys: |
-    #     ${{ runner.os }}-node-
-  
-    
-    #- name: Install, build, test # Выполняем необходимые команды
-    #  run: |
-    #    npm install
-    #    npm run build
-    #    npm test
-    #  env: # В окружении устанавливаем CI в истину 
-    #    CI: true
-
-    
-    
-    #- name: Checkout
-    #  uses: actions/checkout@v2
-    #- name: Setup Node
-    #  uses: actions/setup-node@v1
-    #  with:
-    #    node-version: '10.x'
-    #- name: Cache
-    #  uses: actions/cache@v1
-    #  with:
-    #    path: ~/.npm
-    #    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    #    restore-keys: |
-    #      ${{ runner.os }}-node-
-    #- name: Install
-    #  run: npm ci
-    #- name: Build
-    #  run: npm run build
