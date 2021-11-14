@@ -41,7 +41,9 @@ jobs:
         quasar --version
         quasar help
         cd ./Frontend
-        quasar build 
+        npm run build
+        
+     # quasar build 
         
       
       #  npm install ./Frontend
