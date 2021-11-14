@@ -32,5 +32,8 @@ jobs:
         yarn install 
         
     - name: Build frontend server
-      run: yarn build
+      run: |
+        cd ./Frontend
+        pwd
+        yarn build
         
