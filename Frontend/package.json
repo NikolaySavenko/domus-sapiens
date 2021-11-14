@@ -6,7 +6,7 @@
   "author": "Domus Sapiens",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
     "build": "quasar build"
   },
   "dependencies": {
