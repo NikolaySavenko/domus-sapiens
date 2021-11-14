@@ -27,6 +27,9 @@ jobs:
   
     - run: cd ./Frontend
     
+    - name: print directory
+      run: pwd
+    
     - name: Install all dependencies  
       run: yarn install 
         
