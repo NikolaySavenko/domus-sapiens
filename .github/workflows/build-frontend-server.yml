@@ -3,13 +3,17 @@ name: build-frontend-server
 
 on:
   push:
-
+  #  paths: ./Frontend
   pull_request:
     
 jobs:
   build-frontend-server:
 
     runs-on: ubuntu-18.04
+    
+    defaults:
+      run:
+        working-directory: ./Frontend
 
     strategy:
       matrix:
@@ -26,14 +30,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install all dependencies 
-      run: |
-        cd ./Frontend
-        pwd
-        yarn install 
+      run: yarn install 
         
     - name: Build frontend server
-      run: |
-        cd ./Frontend
-        pwd
-        yarn build
+      run: yarn build
         
