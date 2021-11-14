@@ -40,7 +40,7 @@ jobs:
       run: |
         quasar --version
         quasar help
-        quasar build
+        quasar build ./Frontend
         
       
       #  npm install ./Frontend
