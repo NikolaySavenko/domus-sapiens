@@ -30,18 +30,18 @@ jobs:
     - name: version npm
       run: npm version 
 
-    - name: Install
-      run: |
-        yarn install
-        yarn add ./Frontend
-        yarn global add @quasar/cli
+    #- name: Install
+    #  run: |
+    #    yarn install
+    #    yarn add ./Frontend
+    #    yarn global add @quasar/cli
     
     - name: Build  # npm run build ./Frontend  --if-present
       run: |
-        quasar --version
-        quasar help
+        
         cd ./Frontend
-        npm run build
+        yarn install
+        yarn build
         
      # quasar build 
         
