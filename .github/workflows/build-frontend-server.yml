@@ -1,0 +1,37 @@
+
+name: build-frontend-server
+
+on:
+  push:
+  #  paths: ./Frontend
+  pull_request:
+    
+jobs:
+  build-frontend-server:
+
+    runs-on: ubuntu-18.04
+    
+    defaults:
+      run:
+        working-directory: ./Frontend
+
+    strategy:
+      matrix:
+        node-version: [ 16.x ]  
+ 
+    steps:
+    
+    - name: Git clone our repo
+      uses: actions/checkout@v2
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install all dependencies 
+      run: yarn install 
+        
+    - name: Build frontend server
+      run: yarn build
+        
