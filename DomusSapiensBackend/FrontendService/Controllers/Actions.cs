@@ -43,6 +43,13 @@ namespace FrontendService.Controllers
 			return $"Oh shit! {id} has been triggered(result={await actionMessage.TrySendAsync()})!";
 		}
 
+		// OPTIONS api/<Actions>/actionName/Invoke
+		[HttpOptions("{id:guid}/Invoke")]
+		public IActionResult InvokeOptionsAsync()
+		{
+			return Ok();
+		}
+
 		// POST api/<Actions>/5
 		[HttpPost("{user_id:guid}")]
 		public void Post(Guid user_id, [FromBody] string actionName)
