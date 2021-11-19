@@ -45,7 +45,7 @@ namespace FrontendService.Controllers
 
 		// OPTIONS api/<Actions>/actionName/Invoke
 		[HttpOptions("{id:guid}/Invoke")]
-		public IActionResult InvokeOptionsAsync(Guid id, [FromBody] JObject actionParams)
+		public IActionResult InvokeOptionsAsync()
 		{
 			return Ok();
 		}
