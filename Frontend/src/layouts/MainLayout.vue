@@ -46,7 +46,6 @@
 </template>
 
 <script lang="ts">
-//import axios from 'axios'
 import { defineComponent, ref } from "vue"
 
 export default defineComponent({
