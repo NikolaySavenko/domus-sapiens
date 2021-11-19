@@ -1,6 +1,7 @@
 using FrontendService.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,13 +22,20 @@ builder.Services.AddCors(options =>
 		 builder
 		 .AllowAnyOrigin() 
 		 .AllowAnyMethod()
-		 .AllowAnyHeader()
-		 .AllowCredentials();
+		 .AllowAnyHeader();
      });
 });
 
 var app = builder.Build();
-
+app.UseExceptionHandler(errorApp =>
+{
+	errorApp.Run(async context =>
+	{
+		context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+		context.Response.ContentType = "application/json";
+		await context.Response.WriteAsync(@"{""error"": {""message"": ""Я упал""}}");
+	});
+});
 app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
