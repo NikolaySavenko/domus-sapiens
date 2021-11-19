@@ -14,7 +14,21 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<PostgresContext>(options =>
 		options.UseNpgsql(Environment.GetEnvironmentVariable("PostgreSQL")));
 
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAll", builder =>
+	{
+		 builder
+		 .AllowAnyOrigin() 
+		 .AllowAnyMethod()
+		 .AllowAnyHeader()
+		 .AllowCredentials();
+     });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
