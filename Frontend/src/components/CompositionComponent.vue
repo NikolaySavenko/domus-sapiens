@@ -39,7 +39,7 @@ function useDisplayTodo(todos: Ref<Todo[]>) {
 }
 
 export default defineComponent({
-  name: 'CompositionComponent',
+ /* name: 'CompositionComponent',
   props: {
     title: {
       type: String,
@@ -57,8 +57,9 @@ export default defineComponent({
       type: Boolean
     }
   },
-  setup(props) {
-    return { ...useClickCount(), ...useDisplayTodo(toRef(props, 'todos')) };
+  */
+  setup() {
+    return { ...useClickCount() };
   },
 });
 </script>

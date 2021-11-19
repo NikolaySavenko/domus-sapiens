@@ -1,42 +1,31 @@
 <template>
     <div class="obj">
       <div class="row-button">
-        <q-card v-for="lol in data" :key="lol" class="alignment">
-          <q-card-actions align="center" class="el text-center bg-primary">
-            {{ lol.ActionActivityName }}
-          </q-card-actions>
+        <q-card v-for="data in buttons.data" :key="data" class="alignment">
+          <q-btn :to="{ path: 'information', query: { id: data.actionActivityId } }" no-caps align="center" class="el text-center bg-primary">
+            {{ data.actionActivityName }}
+          </q-btn>
         </q-card>
       </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue"
-const data = [
-{
-  ActionActivityId : "25776d50-36e5-4056-bf30-ca07157bc56d",
-  UserId : "25776d50-36e5-4056-bf30-ca07157bc56d",
-  ActionActivityName : "test"
-},{
-  ActionActivityId : "25776d50-36e5-4056-bf30-ca07157bc56d",
-  UserId : "25776d50-36e5-4056-bf30-ca07157bc56d",
-  ActionActivityName : "t1"
-},{
-  ActionActivityId : "25776d50-36e5-4056-bf30-ca07157bc56d",
-  UserId : "25776d50-36e5-4056-bf30-ca07157bc56d",
-  ActionActivityName : "t2"
-},{
-  ActionActivityId : "25776d50-36e5-4056-bf30-ca07157bc56d",
-  UserId : "25776d50-36e5-4056-bf30-ca07157bc56d",
-  ActionActivityName : "t1"
-}]
+import axios from 'axios';
+import { defineComponent, ref, onMounted } from "vue"
 export default defineComponent({
-  data() {
+  setup() {
+    let buttons = ref<any>([])
+    onMounted(async () => {
+        const response = await axios.get('http://140.238.172.28/api/Actions')
+        console.log(response)
+        buttons.value = response
+      })
     return {
-      data
+      buttons
     }
   }
-})
+});
 </script>
 
 <style land="scss" scoped>
@@ -49,7 +38,10 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
 }
-
+button{
+  width: 100%;
+  height:100%;
+}
 .el {
   width:157px;
   height:101px;
