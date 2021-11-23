@@ -28,7 +28,7 @@ export default defineComponent({
     return {
       buttons
     }
-  }//box-shadow: 0px 0px 0px rgba(63, 61, 61, 0.25);
+  }
 });
 </script>
 
