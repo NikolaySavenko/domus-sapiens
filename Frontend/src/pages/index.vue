@@ -12,15 +12,6 @@
         </q-card>
       </div>
     </div>
-    <div class="obj">
-      <div class="row-button">
-        <q-card :unelevated="false" class="alignment">
-          <q-btn no-caps :unelevated="false" align="center" class="button text-center bg-accent">
-            lol
-          </q-btn>
-        </q-card>
-      </div>
-    </div>
 </template>
 
 <script lang="ts">
@@ -30,7 +21,7 @@ export default defineComponent({
   setup() {
     let buttons = ref<any>([])
     onMounted(async () => {
-        const response = await axios.get('http://140.238.172.28/api/Actions')
+        const response = await axios.get('https://domus-sapiens.ru/api/Actions')
         console.log(response)
         buttons.value = response
       })

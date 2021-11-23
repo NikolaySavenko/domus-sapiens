@@ -24,7 +24,7 @@ export default defineComponent({
         async function postRequest(id: string) {
             if(!id) throw `invalid id: ${id}`
             try {
-                await axios.post(`http://140.238.172.28/api/Actions/${id}/Invoke`, {
+                await axios.post(`https://domus-sapiens.ru/api/Actions/${id}/Invoke`, {
                     test: "test"
                 })
             }catch(e) {
