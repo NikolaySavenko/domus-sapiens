@@ -1,8 +1,8 @@
 <template>
     <q-header align="center" class="bg-secondary text-black">
         <p class="text-h4">Профиль</p>
-        <q-btn round flat align="center" class="top-button bg-primary">
-            <img src="../assets/plus.png">
+        <q-btn round flat align="center" class="top-button bg-accent">
+            <q-avatar icon="add"/>
         </q-btn>
         <p class="text-h4">Имя Фамилия</p>
     </q-header>
@@ -19,12 +19,7 @@
         </q-card>
         <q-card class="data">
             <q-card-actions align="left" class="bg-accent">
-              чтото
-            </q-card-actions>
-        </q-card>
-        <q-card class="data">
-            <q-card-actions align="left" class="bg-accent">
-              чтото
+              уведомления
             </q-card-actions>
         </q-card>
         <q-card class="data">

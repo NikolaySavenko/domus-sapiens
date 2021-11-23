@@ -1,9 +1,22 @@
 <template>
+<q-header class="bg-secondary text-h5 text-black text-center">
+  Быстрые действия
+</q-header>
     <div class="obj">
       <div class="row-button">
-        <q-card v-for="data in buttons.data" :key="data" class="alignment">
-          <q-btn :to="{ path: 'information', query: { id: data.actionActivityId } }" no-caps align="center" class="el text-center bg-primary">
+        <q-card :unelevated="false" v-for="data in buttons.data" :key="data" class="alignment">
+          <q-btn :to="{ path: 'information', query: { id: data.actionActivityId } }"
+          no-caps :unelevated="false" align="center" class="button text-center bg-accent">
             {{ data.actionActivityName }}
+          </q-btn>
+        </q-card>
+      </div>
+    </div>
+    <div class="obj">
+      <div class="row-button">
+        <q-card :unelevated="false" class="alignment">
+          <q-btn no-caps :unelevated="false" align="center" class="button text-center bg-accent">
+            lol
           </q-btn>
         </q-card>
       </div>
@@ -24,7 +37,7 @@ export default defineComponent({
     return {
       buttons
     }
-  }
+  }//box-shadow: 0px 0px 0px rgba(63, 61, 61, 0.25);
 });
 </script>
 
@@ -33,20 +46,17 @@ export default defineComponent({
   margin-left: auto;
   margin-right: auto;
   width: 362px;
+  height: 90%;
 }
 .row-button{
   display: flex;
   flex-wrap: wrap;
 }
-button{
-  width: 100%;
-  height:100%;
-}
-.el {
+.button{
   width:157px;
   height:101px;
   border-radius: 17px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.25));
 }
 .alignment {
   margin-left: 12px;

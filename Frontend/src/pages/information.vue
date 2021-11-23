@@ -1,20 +1,14 @@
 <template>
-    <q-btn to="/">стрелка назад</q-btn>
-    <div class="data" >   
-        <q-btn @click="postRequest(id)" no-caps class=" alignment bg-positive">
-              включить/выключить
-        </q-btn>
-    </div>
-        <q-card class="data bg-positive">
-            <q-card-actions class="q-pt-lg q-pl-md">
-              выбор времени
-            </q-card-actions>
-        </q-card>
-        <q-card class="data bg-positive">
-            <q-card-actions class="q-pt-lg q-pl-md">
-              добавить
-            </q-card-actions>
-        </q-card>
+    <q-btn to="/" :unelevated="true" icon="arrow_back"/>
+    <q-btn no-caps class=" alignment bg-accent">
+        включить/выключить
+    </q-btn>
+    <q-btn no-caps class=" alignment bg-accent">
+        выбор времени
+    </q-btn>
+    <q-btn no-caps class=" alignment bg-accent">
+        добавить
+    </q-btn>
     
 </template>
 
@@ -54,11 +48,15 @@ export default defineComponent({
 <style land="scss" scoped>
 .data {
     border-radius: 16px;
-    margin-top: 9px;
+    border: 2px solid black;
+    margin-top: 10px;
+    width: 100%;
 }
 .alignment {
     width: 90%;
-    margin: auto;
+    margin-top: 9px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .top-button {
     width: 150px;
