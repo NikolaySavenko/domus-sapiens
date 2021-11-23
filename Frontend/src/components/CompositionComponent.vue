@@ -38,7 +38,9 @@ function useDisplayTodo(todos: Ref<Todo[]>) {
   return { todoCount };
 }
 
+const adress = "http://domus-sapiens.ru/api/Actions"
 export default defineComponent({
+  
  /* name: 'CompositionComponent',
   props: {
     title: {
@@ -59,7 +61,7 @@ export default defineComponent({
   },
   */
   setup() {
-    return { ...useClickCount() };
+    return { ...useClickCount(), adress };
   },
 });
 </script>
