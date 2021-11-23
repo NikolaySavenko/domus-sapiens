@@ -3,17 +3,17 @@
         <div align="center" class="text-h5 q-pt-md">Мои устройства</div>
     </q-header>
     <div class="alignment" >
-        <q-card class="data bg-positive">
+        <q-card class="data bg-accent">
             <q-card-actions class="q-pt-lg q-pl-md">
               Умное устройство
             </q-card-actions>
         </q-card>
-        <q-card class="data bg-positive">
+        <q-card class="data bg-accent">
             <q-card-actions class="q-pt-lg q-pl-md">
               Умное устройство
             </q-card-actions>
         </q-card>
-        <q-card class="data bg-positive">
+        <q-card class="data bg-accent">
             <q-card-actions class="q-pt-lg q-pl-md">
               Умное устройство
             </q-card-actions>

@@ -3,45 +3,43 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    <q-footer class="bottom-menu">
-        <q-tabs v-model="tab" align="center" indicator-color="transparent" dense>
-          <q-route-tab to="profile" name="profile" :ripple="false" >
-            <q-btn round dense class="small-size-buttons" flat>
-              <q-avatar class="scalable-picture-size">
-                <img src="../assets/profile.png" >
-              </q-avatar>
-            </q-btn>
-          </q-route-tab>
-          <q-route-tab to="myrooms" :ripple="false" name="rooms" >
-            <q-btn dense round class="small-size-buttons" flat>
-              <q-avatar square class="scalable-picture-size">
-                <img src="../assets/door.png">
-              </q-avatar>
-            </q-btn>
-          </q-route-tab>
-          <q-route-tab to="/" :ripple="false" name="main" >
-            <q-btn round dense class="small-size-buttons" flat>
-              <q-avatar square class="scalable-picture-size" >
-                <img src="../assets/house.png">
-              </q-avatar>
-            </q-btn>
-          </q-route-tab>
-          <q-route-tab to="mydevice" :ripple="false" name="mydevice">
-            <q-btn round dense class="small-size-buttons" flat>
-              <q-avatar square class="scalable-picture-size">
-                <img src="../assets/dom.png">
-              </q-avatar>
-            </q-btn>
+    <div class="height-menu">
+      <q-footer class="bottom-menu bg-primary ">
+          <q-tabs v-model="tab" align="center" indicator-color="transparent" dense>
+            <q-route-tab to="mydevice" class="button-left-right"  name="mydevice" :ripple="false" >
+              <q-btn round dense class="small-size-buttons" flat>
+                <q-avatar icon="lightbulb" class="scalable-picture-size"/>
+              </q-btn>
             </q-route-tab>
-          <q-route-tab to="settings" :ripple="false" name="settings">
-            <q-btn round dense class="small-size-buttons" flat>
-              <q-avatar class="scalable-picture-size">
-                <img src="~assets\settings.png">
-              </q-avatar>
-            </q-btn>
-          </q-route-tab>
-        </q-tabs>
-    </q-footer>
+            <q-route-tab to="/" :ripple="false"  name="main" >
+              <q-btn dense round class="small-size-buttons" flat>
+                <q-avatar icon="dashboard" square class="scalable-picture-size"/>
+              </q-btn>
+            </q-route-tab>
+            <q-route-tab to="profile" class="button-left-right" :ripple="false"  name="profile" >
+              <q-btn round dense class="small-size-buttons" flat>
+                <q-avatar icon="perm_identity" square class="scalable-picture-size" />
+              </q-btn>
+            </q-route-tab>
+            <!--
+              пока оставлю на всякий пожарный
+              <q-route-tab to="mydevice" :ripple="false" name="rooms">
+              <q-btn round dense class="small-size-buttons" flat>
+                <q-avatar square class="scalable-picture-size">
+                  <img src="../assets/dom.png">
+                </q-avatar>
+              </q-btn>
+              </q-route-tab>
+            <q-route-tab to="settings" :ripple="false" name="settings">
+              <q-btn round dense class="small-size-buttons" flat>
+                <q-avatar class="scalable-picture-size">
+                  <img src="~assets\settings.png">
+                </q-avatar>
+              </q-btn>
+            </q-route-tab>-->
+          </q-tabs>
+      </q-footer>
+    </div>
   </q-layout>
 </template>
 
@@ -57,12 +55,16 @@ export default defineComponent({
 </script>
 
 <style land="scss" scoped>
+.button-left-right{
+  margin-right: auto;
+  margin-left: auto;
+}
+.height-menu{
+  height:30px;
+}
 .bottom-menu {
-  border-radius: 30px 30px 0px 0px;
-  position: absolute;
   width: 100%;
   height: 50px;
-  background: linear-gradient(180deg, #C6AAFD 0%, #89EAF3 134%), linear-gradient(180deg, #65B5E1 0%, #2F496E 151.5%);;
 }
 .scalable-picture-size {
   width: 100%;
