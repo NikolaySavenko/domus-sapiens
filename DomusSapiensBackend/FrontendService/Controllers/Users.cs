@@ -34,7 +34,7 @@ namespace FrontendService.Controllers
 		[HttpGet("{id:guid}")]
 		public User Get(Guid id)
 		{
-			return _context.Users.Where(u => u.UserId == id).First();
+			return _context.Users.FirstOrDefault(u => u.UserId == id);
 		}
 
 		// POST api/<Users>/5
