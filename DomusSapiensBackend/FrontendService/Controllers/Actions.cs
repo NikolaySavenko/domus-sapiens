@@ -31,14 +31,14 @@ namespace FrontendService.Controllers
 		[HttpGet("{actionName}")]
 		public ActionActivity Get(string actionName)
 		{
-			return _context.Actions.Where(a => a.ActionActivityName == actionName).First();
+			return _context.Actions.FirstOrDefault(a => a.ActionActivityName == actionName);
 		}
 
 		// GET api/<Actions>/actionName/Invoke
 		[HttpPost("{id:guid}/Invoke")]
 		public async Task<string> InvokeAsync(Guid id, [FromBody] JObject actionParams)
 		{
-			var activity = _context.Actions.Where(a => a.ActionActivityId == id).First();
+			var activity = _context.Actions.FirstOrDefault(a => a.ActionActivityId == id);
 			var actionMessage = new ActionMessage(activity, actionParams, _log);
 			return $"Oh shit! {id} has been triggered(result={await actionMessage.TrySendAsync()})!";
 		}
