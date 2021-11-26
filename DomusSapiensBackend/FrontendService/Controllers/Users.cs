@@ -32,9 +32,14 @@ namespace FrontendService.Controllers
 
 		// GET api/<Users>/5
 		[HttpGet("{id:guid}")]
-		public User Get(Guid id)
+		public ActionResult Get(Guid id)
 		{
-			return _context.Users.FirstOrDefault(u => u.UserId == id);
+			var result = _context.Users.FirstOrDefault(u => u.UserId == id);
+			if (result != null)
+			{
+				return Ok(result);
+			}
+			return NotFound();
 		}
 
 		// POST api/<Users>/5
