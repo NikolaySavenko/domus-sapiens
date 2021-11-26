@@ -1,19 +1,37 @@
 using IoTControlService.ServiceBusMessaging;
+using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
 
-builder.Services.AddControllers();
-builder.Services.AddHostedService<IoTQueueConsumer>();
-builder.Services.AddHostedService<HighLevelCommendsConsumer>();
-builder.Services.AddSingleton<IProcessData, ProcessData>();
+Log.Information("Starting up");
 
-var app = builder.Build();
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
 
-// Configure the HTTP request pipeline.
+    builder.Host.UseSerilog((ctx, lc) => lc
+        .WriteTo.Console()
+        .ReadFrom.Configuration(ctx.Configuration));
 
-app.UseHttpsRedirection();
+    // Add services to the container.
 
-app.UseAuthorization();
+    builder.Services.AddControllers();
+    builder.Services.AddHostedService<IoTQueueConsumer>();
+    builder.Services.AddHostedService<HighLevelCommendsConsumer>();
+    builder.Services.AddSingleton<IProcessData, ProcessData>();
 
-app.Run();
+    var app = builder.Build();
+
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Unhandled exception");
+}
+finally
+{
+    Log.Information("Shut down complete");
+    Log.CloseAndFlush();
+}
