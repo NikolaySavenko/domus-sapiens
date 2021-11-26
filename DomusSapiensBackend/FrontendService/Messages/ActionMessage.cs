@@ -18,9 +18,9 @@ namespace FrontendService.Messages
 
 		public ILogger Logger { get; init; }
 
-		public ActionMessage(ActionActivity action, JObject actionParams) : this(action, actionParams,  NullLogger.Instance) { }
+		public ActionMessage(ActionActivity action, Dictionary<string, string> actionParams) : this(action, actionParams,  NullLogger.Instance) { }
 
-		public ActionMessage(ActionActivity action, JObject actionParams, ILogger logger)
+		public ActionMessage(ActionActivity action, Dictionary<string, string> actionParams, ILogger logger)
 		{
 			_action = action;
 			Logger = logger;
