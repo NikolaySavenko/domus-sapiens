@@ -56,7 +56,7 @@ namespace IoTControlService.ServiceBusMessaging
 				await _processData.Process(action).ConfigureAwait(false);
 			} catch (Exception ex)
 			{
-				_logger.LogError("Cannot perform message");
+				_logger.LogError(ex, "Cannot perform message");
 			}
 			finally
 			{

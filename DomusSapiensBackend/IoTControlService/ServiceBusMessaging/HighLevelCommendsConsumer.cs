@@ -57,7 +57,7 @@ namespace IoTControlService.ServiceBusMessaging
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError("Cannot perform message");
+				_logger.LogError(ex, "Cannot perform message");
 			}
 			finally
 			{
