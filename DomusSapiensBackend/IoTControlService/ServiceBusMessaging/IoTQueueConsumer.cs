@@ -50,9 +50,18 @@ namespace IoTControlService.ServiceBusMessaging
 
 		private async Task ProcessMessagesAsync(ProcessMessageEventArgs args)
 		{
-			var action = args.Message.Body.ToObjectFromJson<HighLevelAction>();
-			await _processData.Process(action).ConfigureAwait(false);
-			await args.CompleteMessageAsync(args.Message).ConfigureAwait(false);
+			try
+			{
+				var action = args.Message.Body.ToObjectFromJson<HighLevelAction>();
+				await _processData.Process(action).ConfigureAwait(false);
+			} catch (Exception ex)
+			{
+				_logger.LogError("Cannot perform message");
+			}
+			finally
+			{
+				await args.CompleteMessageAsync(args.Message).ConfigureAwait(false);
+			}
 		}
 
 		public async ValueTask DisposeAsync()
