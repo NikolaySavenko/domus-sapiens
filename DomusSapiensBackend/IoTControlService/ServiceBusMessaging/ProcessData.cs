@@ -6,12 +6,10 @@ namespace IoTControlService.ServiceBusMessaging
     public class ProcessData : IProcessData
     {
         private IConfiguration _configuration;
-        private ILogger _logger;
 
-		public ProcessData(IConfiguration configuration, ILogger logger)
+		public ProcessData(IConfiguration configuration)
 		{
 			_configuration = configuration;
-			_logger = logger;
 		}
 
 		public async Task Process(HighLevelAction action)
