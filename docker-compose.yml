@@ -78,6 +78,7 @@ services:
     environment:
       ServiceBusConnectionString: ${ServiceBusConnectionString}
       ASPNETCORE_ENVIRONMENT: ${IOT_CONTROL_ASPNETCORE_ENVIRONMENT}
+      IoTHubConnectionString: ${IoTHubConnectionString}
     ports:
       - "3002:80"
     build: 
