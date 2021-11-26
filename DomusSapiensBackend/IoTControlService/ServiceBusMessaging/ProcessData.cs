@@ -16,7 +16,7 @@ namespace IoTControlService.ServiceBusMessaging
         {
             var factory = new CommandFactory(action.Device);
             var command = factory.BuildCommand(action);
-            command.Execute();
+            await command.ExecuteAsync();
         }
     }
 }

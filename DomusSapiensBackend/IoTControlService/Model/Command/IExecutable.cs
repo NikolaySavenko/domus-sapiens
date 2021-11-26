@@ -2,6 +2,6 @@
 {
 	public interface IExecutable
 	{
-		public void Execute();
+		public Task ExecuteAsync();
 	}
 }

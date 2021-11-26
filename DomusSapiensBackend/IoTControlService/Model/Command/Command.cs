@@ -1,4 +1,6 @@
 ﻿using IoTControlService.Model.DeviceMethods;
+using Microsoft.Azure.Devices;
+using Newtonsoft.Json;
 
 namespace IoTControlService.Model.Command
 {
@@ -7,13 +9,23 @@ namespace IoTControlService.Model.Command
 	{
 		public List<IDeviceMethod> _methods { get; set; }
 		public Guid DeviceId { get; init; }
+		private string targetDevice = "test-device";// DeviceId in future
 
-		public void Execute()
+		private string _connectionString = Environment.GetEnvironmentVariable("IoTHubConnectionString");
+
+		public async Task ExecuteAsync()
 		{
-			foreach (var method in _methods)
+			using (var serviceClient = ServiceClient.CreateFromConnectionString(_connectionString))
 			{
-				// TODO send to device
+				foreach (var method in _methods)
+				{
+					var deviceMethod = new CloudToDeviceMethod(method.Name);
+					var payload = JsonConvert.SerializeObject(method.Params);
+					deviceMethod.SetPayloadJson(payload);
+					await serviceClient.InvokeDeviceMethodAsync(targetDevice, deviceMethod);
+				}
 			}
+			
 		}
 	}
 }

@@ -41,7 +41,7 @@ namespace FrontendService.Controllers
 
 		// GET api/<Actions>/actionName/Invoke
 		[HttpPost("{id:guid}/Invoke")]
-		public async Task<ActionResult> InvokeAsync(Guid id, [FromBody] JObject actionParams)
+		public async Task<ActionResult> InvokeAsync(Guid id, [FromBody] Dictionary<string, string> actionParams)
 		{
 			var activity = _context.Actions.FirstOrDefault(a => a.ActionActivityId == id);
 			if (activity != null)

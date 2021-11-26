@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using IoTControlService.Model.DeviceMethods;
+using Newtonsoft.Json.Linq;
 
 namespace IoTControlService.Model.HighLevelAction
 {
@@ -6,6 +7,6 @@ namespace IoTControlService.Model.HighLevelAction
 	{
 		public string Action { get; set; }
 		public Guid Device { get; set; }
-		public JObject Params { get; set; }
+		public Dictionary<string, string> Params { get; set; }
 	}
 }
