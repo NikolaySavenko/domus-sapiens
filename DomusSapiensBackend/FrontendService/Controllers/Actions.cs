@@ -29,18 +29,28 @@ namespace FrontendService.Controllers
 
 		// GET api/<Actions>/5
 		[HttpGet("{actionName}")]
-		public ActionActivity Get(string actionName)
+		public ActionResult<ActionActivity> Get(string actionName)
 		{
-			return _context.Actions.FirstOrDefault(a => a.ActionActivityName == actionName);
+			var result = _context.Actions.FirstOrDefault(a => a.ActionActivityName == actionName);
+			if (result != null)
+			{
+				return Ok(result);
+			}
+			return NotFound();
 		}
 
 		// GET api/<Actions>/actionName/Invoke
 		[HttpPost("{id:guid}/Invoke")]
-		public async Task<string> InvokeAsync(Guid id, [FromBody] JObject actionParams)
+		public async Task<ActionResult> InvokeAsync(Guid id, [FromBody] JObject actionParams)
 		{
 			var activity = _context.Actions.FirstOrDefault(a => a.ActionActivityId == id);
-			var actionMessage = new ActionMessage(activity, actionParams, _log);
-			return $"Oh shit! {id} has been triggered(result={await actionMessage.TrySendAsync()})!";
+			if (activity != null)
+			{
+				var actionMessage = new ActionMessage(activity, actionParams, _log);
+				return Ok($"Oh shit! {id} has been triggered(result={await actionMessage.TrySendAsync()})!");
+			}
+			
+			return NotFound();
 		}
 
 		// OPTIONS api/<Actions>/actionName/Invoke
