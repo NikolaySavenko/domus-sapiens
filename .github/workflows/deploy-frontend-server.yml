@@ -44,7 +44,6 @@ jobs:
       - name: Deploy 
         run: ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SSH_USER_AND_IP }} "sh restart-frontend-server.sh ${INPUTS_BRANCH:-${GITHUB_REF##*/}}"
       
-      
 #       - name: Deploy
 #         run: |
 #           rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --archive --compress --delete . ${{ secrets.SSH_USER_AND_IP }}:restart-frontend-server/
