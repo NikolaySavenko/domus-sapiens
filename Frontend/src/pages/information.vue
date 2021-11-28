@@ -37,12 +37,6 @@ export default defineComponent({
         }
     }
 })
-//<div class="alignment" > </div>
-/* <q-card class=" ">
-            <q-btn no-caps class="data alignment bg-positive">
-              включить/выключить
-            </q-btn>
-        </q-card>*/ 
 </script>
 
 <style land="scss" scoped>
