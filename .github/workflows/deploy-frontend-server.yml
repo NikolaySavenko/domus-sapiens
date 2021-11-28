@@ -1,8 +1,6 @@
 name: deploy-frontend-server
 
-on:
-  push:
-    
+on:  
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -24,7 +22,8 @@ jobs:
           echo "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
       
-      - run: echo "${INPUTS_BRANCH:-${GITHUB_REF##*/}}"
+      - name: print deployment branch
+        run: echo "${INPUTS_BRANCH:-${GITHUB_REF##*/}}"
       
       - name: Deploy 
         run: ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SSH_USER_AND_IP }} "sh restart-frontend-server.sh ${INPUTS_BRANCH:-${GITHUB_REF##*/}}"
