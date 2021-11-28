@@ -28,4 +28,3 @@ jobs:
       
       - name: Deploy 
         run: ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SSH_USER_AND_IP }} "sh restart-frontend-server.sh ${INPUTS_BRANCH:-${GITHUB_REF##*/}}"
-
