@@ -12,9 +12,9 @@ jobs:
 
     runs-on: ubuntu-18.04
     
-#     defaults:
-#       run:
-#         working-directory: ./Frontend
+    defaults:
+      run:
+        working-directory: ./Frontend
     
     strategy:
       matrix:
@@ -37,6 +37,16 @@ jobs:
           mkdir "$HOME/.ssh"
           echo "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
+      
+      - name: Install all dependencies
+        run: yarn install 
+        
+      - name: Build frontend server
+        run: yarn build 
+      
+      - run: npm install
+      - run: npm run build
+    
       
       - name: Deploy
         run: |
