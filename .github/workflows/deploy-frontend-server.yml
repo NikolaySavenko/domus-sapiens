@@ -1,0 +1,43 @@
+name: deploy-frontend-server
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  deploy-frontend-server:
+
+    runs-on: ubuntu-18.04
+    
+#     defaults:
+#       run:
+#         working-directory: ./Frontend
+    
+    strategy:
+      matrix:
+        node-version: [ 16.x ]  
+        
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+  
+      - name: Git clone our repo
+        uses: actions/checkout@v2
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Setup key
+        run: |
+          set -eu
+          mkdir "$HOME/.ssh"
+          echo "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/key"
+          chmod 600 "$HOME/.ssh/key"
+      
+      - name: Deploy
+        run: |
+          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --archive --compress --delete . ${{ secrets.SSH_USER_AND_IP }}:restart-frontend-server/
+          ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SSH_USER_AND_IP }} "sh restart-frontend-server.sh"
+    
