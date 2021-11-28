@@ -12,9 +12,9 @@ jobs:
 
     runs-on: ubuntu-18.04
     
-    defaults:
-      run:
-        working-directory: ./Frontend
+#     defaults:
+#       run:
+#         working-directory: ./Frontend
     
     strategy:
       matrix:
@@ -38,18 +38,13 @@ jobs:
           echo "${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
       
-      - name: Install all dependencies
-        run: yarn install 
-        
-      - name: Build frontend server
-        run: yarn build 
+      - run: echo "${INPUTS_BRANCH:-${GITHUB_REF##*/}}"
       
-      - run: npm install
-      - run: npm run build
-    
+#       - name: Pull 
+#         run: ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SSH_USER_AND_IP }} "cd domus-sapiens" 
       
-      - name: Deploy
-        run: |
-          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --archive --compress --delete . ${{ secrets.SSH_USER_AND_IP }}:restart-frontend-server/
-          ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SSH_USER_AND_IP }} "sh restart-frontend-server.sh"
+#       - name: Deploy
+#         run: |
+#           rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --archive --compress --delete . ${{ secrets.SSH_USER_AND_IP }}:restart-frontend-server/
+#           ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SSH_USER_AND_IP }} "sh restart-frontend-server.sh"
     
