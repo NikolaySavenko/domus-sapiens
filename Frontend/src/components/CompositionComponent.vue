@@ -40,7 +40,6 @@ function useDisplayTodo(todos: Ref<Todo[]>) {
 
 const adress = "http://domus-sapiens.ru/api/Actions"
 export default defineComponent({
-  
  /* name: 'CompositionComponent',
   props: {
     title: {
