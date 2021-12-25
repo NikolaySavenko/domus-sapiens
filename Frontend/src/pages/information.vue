@@ -27,8 +27,9 @@ export default defineComponent({
                 await axios.post(`https://domus-sapiens.ru/api/Actions/${id}/Invoke`, {
                     test: "test"
                 })
+                console.log("lol")
             }catch(e) {
-            console.log(e)
+                console.log(e)
             }
         }
         return {

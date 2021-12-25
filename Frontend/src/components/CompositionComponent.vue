@@ -40,25 +40,6 @@ function useDisplayTodo(todos: Ref<Todo[]>) {
 
 const adress = "http://domus-sapiens.ru/api/Actions"
 export default defineComponent({
- /* name: 'CompositionComponent',
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    todos: {
-      type: Array as PropType<Todo[]>,
-      default: () => []
-    },
-    meta: {
-      type: Object as PropType<Meta>,
-      required: true
-    },
-    active: {
-      type: Boolean
-    }
-  },
-  */
   setup() {
     return { ...useClickCount(), adress };
   },
