@@ -5,7 +5,7 @@
     <div class="obj">
       <div class="row-button">
         <q-card :unelevated="false" v-for="data in buttons.data" :key="data" class="alignment">
-          <q-btn :to="{ path: 'information', query: { id: data.actionActivityId } }"
+          <q-btn @click="postRequest(data.actionActivityId)"
           no-caps :unelevated="false" align="center" class="button text-center bg-accent">
             {{ data.actionActivityName }}
           </q-btn>
@@ -25,8 +25,19 @@ export default defineComponent({
         console.log(response)
         buttons.value = response
       })
+      async function postRequest(id: string) {
+        if(!id) throw `invalid id: ${id}`
+        try {
+          await axios.post(`https://domus-sapiens.ru/api/Actions/${id}/Invoke`, {
+            test: "test"
+          })
+        }catch(e) {
+          console.log(e)
+        }
+        }
     return {
-      buttons
+      buttons,
+      postRequest
     }
   }
 });
