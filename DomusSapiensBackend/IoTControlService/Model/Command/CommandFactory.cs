@@ -22,7 +22,7 @@ namespace IoTControlService.Model.Command
 			var pin = action.Params.ContainsKey("pin") ? action.Params["pin"] : data[1];
 			var value = action.Params.ContainsKey("value") ? action.Params["value"] : data[3];
 			Actionjob job = new Actionjob { Name = "JobFromDB", Methods = new List<IDeviceMethod>() {
-				new GPIOSwitch(pin, value)
+				new GPIOSwitch(int.Parse(pin), int.Parse(value))
 			} };
 
 			_executable._methods = job.Methods;
