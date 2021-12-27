@@ -4,6 +4,6 @@
 	{
 		public string Name { get; init; }
 
-		public Dictionary<string, string> Params { get; init; }
+		public Dictionary<string, int> Params { get; init; }
 	}
 }
